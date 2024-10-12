@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab1IndiviualTask.MainPage">
+    <VerticalStackLayout Padding="30" Spacing="20">
+        <!-- Ввод размера матрицы -->
+        <Label Text="Введите размер матрицы:" />
+        <Entry x:Name="MatrixSizeEntry" Placeholder="Введите число"  />
+
+        <!-- Кнопка для отображения матрицы -->
+        <Button Text="Показать матрицу" Clicked="OnShowMatrixButtonClicked" />
+
+        <!-- Место для отображения матрицы -->
+        <ScrollView>
+            <Grid x:Name="MatrixGrid" />
+        </ScrollView>
+    </VerticalStackLayout>
+</ContentPage>
