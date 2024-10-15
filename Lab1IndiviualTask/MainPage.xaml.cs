@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-using System.Reflection.Emit;
-
+﻿
 namespace Lab1IndiviualTask
 {
     public partial class MainPage : ContentPage
@@ -26,11 +24,11 @@ namespace Lab1IndiviualTask
             }
         }
 
-        private void matrixFilling(int matrixSize)
+        private void fillingTheMatrixWithValues(int matrixSize)
         {
             for (int col = 0; col < matrixSize; col++)
             {
-                int lowestValueInColumn = 0;
+                int lowestValueInColumn = 101;
                 for (int row = 0; row < matrixSize; row++)
                 {
                     Random rand = new Random();
@@ -56,31 +54,8 @@ namespace Lab1IndiviualTask
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Center
             };
-
-            var frame = new Frame
-            {
-                Content = label,
-                BorderColor = Colors.Black,  // Цвет границы
-                CornerRadius = 0,            // Без закругления углов
-                Padding = 5,                 // Внутренние отступы
-                Margin = 2                   // Внешние отступы (чтобы разделить элементы)
-            };
-            return frame;
+            return framing(label);
         }
-
-        private Frame Framing(Microsoft.Maui.Controls.Label label)
-        {
-            var frame = new Frame
-            {
-                Content = label,
-                BorderColor = Colors.Black,  // Цвет границы
-                CornerRadius = 0,            // Без закругления углов
-                Padding = 5,                 // Внутренние отступы
-                Margin = 2                   // Внешние отступы (чтобы разделить элементы)
-            };
-            return frame;
-        }
-
         private Frame minimalValue(int minValue)
         {
             var minLabel = new Microsoft.Maui.Controls.Label
@@ -90,8 +65,22 @@ namespace Lab1IndiviualTask
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Center
             };
-            return Framing(minLabel);
+            return framing(minLabel);
         }
+
+        private Frame framing(Microsoft.Maui.Controls.Label label)
+        {
+            var frame = new Frame
+            {
+                Content = label,
+                BorderColor = Colors.Black,  // Цвет границы
+                CornerRadius = 0,            // Без закругления углов
+                Padding = 5,                 // Внутренние отступы
+                Margin = 2                   // Внешние отступы (чтобы разделить элементы)
+            };
+            return frame;
+        }
+        
 
         private void OnShowMatrixButtonClicked(object sender, EventArgs e)
         {
@@ -102,34 +91,8 @@ namespace Lab1IndiviualTask
             if (int.TryParse(MatrixSizeEntry.Text, out int matrixSize) && matrixSize > 0)
             {
                 creatingNextMatrix(matrixSize);
-
                 // Заполняем матрицу
-                for (int row = 0; row < matrixSize; row++)
-                {
-                    int lowestValueInColumn = 0;
-                    for (int col = 0; col < matrixSize; col++)
-                    {
-                        Random rand = new Random();
-                        int valueInCell = rand.Next(100);
-                        var label = new Microsoft.Maui.Controls.Label
-                        {
-                            Text = $"{valueInCell}",
-                            HorizontalOptions = LayoutOptions.Center,
-                            VerticalOptions = LayoutOptions.Center
-                        };
-
-                        var frame = new Frame
-                        {
-                            Content = label,
-                            BorderColor = Colors.Black,  // Цвет границы
-                            CornerRadius = 0,            // Без закругления углов
-                            Padding = 5,                 // Внутренние отступы
-                            Margin = 2                   // Внешние отступы (чтобы разделить элементы)
-                        };
-
-                        MatrixGrid.Add(frame, col, row);
-                    }
-                }
+                fillingTheMatrixWithValues(matrixSize);
             }
             else
             {
