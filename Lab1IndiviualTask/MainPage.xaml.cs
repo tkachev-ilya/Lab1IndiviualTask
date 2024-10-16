@@ -42,7 +42,7 @@ namespace Lab1IndiviualTask
                     MatrixGrid.Add(frame1, col, row);
                 }
                 var frame = minimalValue(lowestValueInColumn);
-                MatrixGrid.Add(frame, col, matrixSize +1 );
+                MatrixGrid.Add(frame, col, matrixSize + 1 );
             }
         }
 
@@ -61,7 +61,7 @@ namespace Lab1IndiviualTask
             var minLabel = new Microsoft.Maui.Controls.Label
             {
                 Text = minValue.ToString(),
-                TextColor = Colors.Red, // Красный текст
+                TextColor = Colors.Red, 
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Center
             };
@@ -73,10 +73,10 @@ namespace Lab1IndiviualTask
             var frame = new Frame
             {
                 Content = label,
-                BorderColor = Colors.Black,  // Цвет границы
-                CornerRadius = 0,            // Без закругления углов
-                Padding = 5,                 // Внутренние отступы
-                Margin = 2                   // Внешние отступы (чтобы разделить элементы)
+                BorderColor = Colors.Black,  
+                CornerRadius = 0,            
+                Padding = 5,                
+                Margin = 2                   
             };
             return frame;
         }
@@ -96,7 +96,6 @@ namespace Lab1IndiviualTask
             }
             else
             {
-                // Показываем ошибку, если введено неправильное значение
                 DisplayAlert("Ошибка", "Введите корректный размер матрицы", "OK");
             }
         }
